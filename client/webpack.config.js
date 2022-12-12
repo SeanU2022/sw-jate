@@ -15,7 +15,9 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 // ADD TO client/package.json: "devDependencies": {..."mini-css-extract-plugin": "^2.4.5"} and run "npm install"
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
+// Add and configure workbox plugins for a service worker and manifest file
+// this is also declared in src/js/index.js
+const serviceWorkerDistFile = "service-worker.js"
 
 module.exports = () => {
   return {
@@ -38,15 +40,16 @@ module.exports = () => {
 
       // USING WORKBOX to generate generic dist/service-worker.js
       // note: src/js/index.js>Workbox MUST USE service.worker.js when using GenerateSW
-      new WorkboxPlugin.GenerateSW(),
+      // new WorkboxPlugin.GenerateSW(),
       
       // INJECT MANIFEST
-      // INJECT MANIFEST configured here like Workbox but now we can customise service-worker.js through sw.js
-      // INJECT MANIFEST Workbox() must match sw-jate/client/webpack.config.js>InjectManifest>swDest:
-      // new InjectManifest({
-      //   swSrc: './src-sw.js',
-      //   swDest: 'service-worker.js',
-      // }), 
+      // INJECT MANIFEST configured here like Workbox but now we can customise service-worker.js through src-sw.js
+      // INJECT MANIFEST Workbox() must match src/js/index.js>Workbox:
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        // swDest: 'service-worker.js',
+        swDest: serviceWorkerDistFile,
+      }), 
     ],
 
     module: {
