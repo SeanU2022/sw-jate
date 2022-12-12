@@ -1,11 +1,16 @@
+// webpack.start1MiniCSSconfig.js
+// adds CSS loaders and babel to webpack
+// uses MiniCssExtract so that index.js will NOT include CSS
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
-// USING WORKBOX const WorkboxPlugin = require('workbox-webpack-plugin');
+// USING WORKBOX 
+const WorkboxPlugin = require('workbox-webpack-plugin');
+// INJECT MANIFEST
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 // USING MINICSS 
-// uses MiniCssExtract so that index.js will NOT include CSS
 // MiniCSS loader replaces default loader
 // ADD TO client/package.json: "devDependencies": {..."mini-css-extract-plugin": "^2.4.5"} and run "npm install"
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -30,7 +35,7 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
-
+      // USING MINICSS
       new MiniCssExtractPlugin(),
 
       // USING WORKBOX to generate generic dist/service-worker.js
@@ -45,27 +50,6 @@ module.exports = () => {
         // swDest: 'service-worker.js',
         swDest: serviceWorkerDistFile,
       }), 
-
-      // Creates a manifest.json file.
-      new WebpackPwaManifest({
-        fingerprints: false,
-        inject: true,
-        name: 'Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'An alternative to gist for when you are offline',
-        background_color: '#225ca3',
-        theme_color: '#225ca3',
-        start_url: './',
-        publicPath: './',
-        icons: [
-          {
-            src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('assets', 'icons'),
-          },
-          ],
-        }),
-
     ],
 
     module: {
