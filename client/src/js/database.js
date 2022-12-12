@@ -32,7 +32,8 @@ export const postDb = async (content) => {
   console.log('🚀 - data saved to the database', result);
 };
 
-
+// TODO: Add logic to a method that accepts some content and adds it to the database
+// export const putDb = async (content) => console.error('putDb not implemented');
 export const putDb = async (id, content) => {
   // const dbName = 'jate'
   // const collectionName = 'note'
