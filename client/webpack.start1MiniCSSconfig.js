@@ -5,9 +5,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
-// USING WORKBOX 
-const WorkboxPlugin = require('workbox-webpack-plugin');
-// INJECT MANIFEST
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 // USING MINICSS 
@@ -35,18 +32,6 @@ module.exports = () => {
       }),
       // USING MINICSS
       new MiniCssExtractPlugin(),
-
-      // USING WORKBOX to generate generic dist/service-worker.js
-      // note: src/js/index.js>Workbox MUST USE service.worker.js when using GenerateSW
-      new WorkboxPlugin.GenerateSW(),
-      
-      // INJECT MANIFEST
-      // INJECT MANIFEST configured here like Workbox but now we can customise service-worker.js through sw.js
-      // INJECT MANIFEST Workbox() must match sw-jate/client/webpack.config.js>InjectManifest>swDest:
-      // new InjectManifest({
-      //   swSrc: './src-sw.js',
-      //   swDest: 'service-worker.js',
-      // }), 
     ],
 
     module: {
