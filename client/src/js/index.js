@@ -32,6 +32,7 @@ if ('serviceWorker' in navigator) {
   // Workbox() must match sw-jate/client/webpack.config.js>InjectManifest>swDest:
   // const workboxSW = new Workbox('/src-sw.js');
   const workboxSW = new Workbox('/' + serviceWorkerDistFile);
+  console.log('register service worker => register service worker')
   workboxSW.register();
 } else {
   console.error('Service workers are not supported in this browser.');
