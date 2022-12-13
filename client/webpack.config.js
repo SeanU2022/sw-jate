@@ -36,16 +36,16 @@ module.exports = () => {
 
       // USING WORKBOX to generate generic dist/service-worker.js
       // note: src/js/index.js>Workbox MUST USE service.worker.js when using GenerateSW
-      // new WorkboxPlugin.GenerateSW(),
+      new WorkboxPlugin.GenerateSW(),
       
       // INJECT MANIFEST
       // INJECT MANIFEST configured here like Workbox but now we can customise service-worker.js through src-sw.js
       // INJECT MANIFEST Workbox() must match src/js/index.js>Workbox:
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        // swDest: 'service-worker.js',
-        swDest: serviceWorkerDistFile,
-      }), 
+      // new InjectManifest({
+      //   swSrc: './src-sw.js',
+      //   swDest: 'service-worker.js',
+      //   // swDest: serviceWorkerDistFile,
+      // }), 
 
       // Creates a manifest.json file.
       new WebpackPwaManifest({
