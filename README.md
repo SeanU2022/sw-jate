@@ -8,42 +8,40 @@ JATE (Just another text editor) is a single-page Progressive Web Application (PW
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Technologies Used](#technologies-used)
 - [User Story](#user-story)
+- [Mock-up](#mock-up)
 - [License](#license)
+- [Repository](#repository)
 - [Author](#author)
 
-## Local Installation
-1. install node modules: npm i
-2. package.json lists the dependencies
-3. create database techblog_db
-3a. in terminal: mysql -uroot -p 
-3b. in mysql run: source db/schema.db
-4. seed database (optional)
-4a. in terminal: npm run seed
+## Installation
+1. Clone the app from the repository
+2. In the project folder: npm install
+3. In the terminal: npm start
 
-## Running the application
-In terminal:
- 1. node server.js or npm start or npm run watch
- 2. click http://localhost:{PORT}
+## Usage
+ 1. In your browser: load [J.A.T.E](http://localhost:3000)
+It runs on port 3000.
 
 ## Technologies Used
 
 ### Front-end
  - HTML
  - JavaScript/JQuery
- - CSS (jass)
-
-### Back-end Dependencies
- - path
  - Express
- - Express-handlebars using Handlebars.js as the templating language
- - Express-session for cookies
- - Connect-session-sequelize for authentication
- - dotenv for mySQL2
- - Sequelize as the ORM
- - mySQL2/JawsDB
- - BCrypt
- - dev: eslint, package.json, prettier, nodemon
+ - MiniCSS extract plugin
+ - Webpack
+ - idb for IndexDB
+ - Babel
+ - code-mirror-themes
+ 
+### Back-end Dependencies
+ - node.js
+ - Express
+ - if-env
+ - concurrently
+ - nodemon
 
 
 ## User Story
@@ -86,7 +84,19 @@ THEN I should have proper build scripts for a webpack application
 ## Mock-Up
 
 The following mock-up shows the application:
+[Build with Webpack](./assets/1BuildWIthWebpack.gif)
+[Store Notes in IndexDB](./assets/2IndexDBStore3Notes.gif)
+[Retrieve Persistent Data](./assets/3PersistentDataRetrieved.gif)
+[Install Local App](./assets/4InstallAppPart1Paste.gif)
+[Working Offline](./assets/5InstallAppPart2Offline.gif)
+[Uninstalling App](./assets/6OfflineApplication.gif)
 
+### Manifest.json
+![manifest.json](./assets/manifest.json.png)
+### Registered Service Worker
+![Registered Service Worker](./assets/registeredserviceworker.png)
+### IndexDB Storage
+![IndexDB](./assets/IndexDB.png)
 
 ## License
  This application is licencsed under [MIT license](https://opensource.org/licenses/MIT).
@@ -96,8 +106,5 @@ https://github.com/SeanU2022/sw-jate
 ## Deployed Application
 https://sw-jate.herokuapp.com/
 
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
 ## Author
  - Sean Wallace: https://github.com/SeanU2022
