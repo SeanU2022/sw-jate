@@ -32,7 +32,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 registerRoute(
   ({ request }) => request.destination === 'image',
   new CacheFirst({
-    cacheName: 'my-image-cache',
+    cacheName: 'jate-image-cache',
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],

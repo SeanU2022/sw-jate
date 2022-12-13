@@ -61,11 +61,10 @@ module.exports = () => {
       // INJECT MANIFEST Workbox() must match src/js/index.js>Workbox:
       new InjectManifest({
         swSrc: './src-sw.js',
-        // swDest: 'service-worker.js'
         swDest: serviceWorkerDistFile
       }), 
 
-      // Creates a manifest.json file.
+      // Creates dist/manifest.json file.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,

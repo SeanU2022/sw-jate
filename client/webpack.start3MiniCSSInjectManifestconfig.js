@@ -1,16 +1,12 @@
-// webpack.start1MiniCSSconfig.js
-// adds CSS loaders and babel to webpack
-// uses MiniCssExtract so that index.js will NOT include CSS
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 // USING WORKBOX 
 const WorkboxPlugin = require('workbox-webpack-plugin');
-// INJECT MANIFEST
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 // USING MINICSS 
+// uses MiniCssExtract so that index.js will NOT include CSS
 // MiniCSS loader replaces default loader
 // ADD TO client/package.json: "devDependencies": {..."mini-css-extract-plugin": "^2.4.5"} and run "npm install"
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -33,23 +29,61 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin',
+        title: 'JATE Webpack Plugin',
       }),
-      // USING MINICSS
+
       new MiniCssExtractPlugin(),
 
       // USING WORKBOX to generate generic dist/service-worker.js
       // note: src/js/index.js>Workbox MUST USE service.worker.js when using GenerateSW
-      // new WorkboxPlugin.GenerateSW(),
+      // new WorkboxPlugin.GenerateSW({
+      //   swDest: 'service-worker.js'
+      // }),
+
+      // new WorkboxPlugin.GenerateSW({
+      //   exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+      //   runtimeCaching: [
+      //     {
+      //       urlPattern: [/\.(?:png|jpg|jpeg|svg)$/],
+      //       handler: 'CacheFirst',
+      //       options: {
+      //         cacheName: 'images',
+      //         expiration: {
+      //           maxEntries: 5
+      //         }
+      //       }
+      //     }
+      //   ]
+      // }),
       
       // INJECT MANIFEST
       // INJECT MANIFEST configured here like Workbox but now we can customise service-worker.js through src-sw.js
       // INJECT MANIFEST Workbox() must match src/js/index.js>Workbox:
       new InjectManifest({
         swSrc: './src-sw.js',
-        // swDest: 'service-worker.js',
-        swDest: serviceWorkerDistFile,
+        swDest: serviceWorkerDistFile
       }), 
+
+      // Creates a manifest.json file.
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'An alternative to gist for when you are offline',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+          ],
+        }),
+
     ],
 
     module: {
