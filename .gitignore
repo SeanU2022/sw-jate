@@ -6,6 +6,7 @@
 node_modules/
 commitmsg.txt
 handycode*.js
+dep.sh
 
 # User-specific files
 *.rsuser

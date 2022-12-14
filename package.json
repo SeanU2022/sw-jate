@@ -9,7 +9,6 @@
     "start": "npm run build && cd server && node server.js",
     "server": "cd server node server.js --ignore client",
     "build": "cd client && pwd && ls && npm run build", 
-    "heroku-postbuild": "webpack --config webpack.config.js",
     "client": "cd client && npm start"
   },
   "keywords": [],
@@ -28,6 +27,7 @@
   },
   "_comments": {
     "_comment-heroku-postbuild": "heroku skips build to run this script above",
-    "_Xheroku-postbuild": "cd client && pwd && ls && webpack --config webpack.config.js"
+    "_Xheroku-postbuild": "cd client && pwd && ls && webpack --config webpack.config.js",
+    "__Xheroku-postbuild": "webpack --config webpack.config.js"
   }
 }
