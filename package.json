@@ -10,7 +10,7 @@
     "server": "cd server node server.js --ignore client",
     "build": "cd client && npm run build",
     "client": "cd client && npm start",
-    "heroku-postbuild": "pwd && ls && webpack --config webpack.config.js"
+    "heroku-postbuild": "cd client && pwd && ls && webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
