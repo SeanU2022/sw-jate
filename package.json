@@ -21,13 +21,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4",
-    "html-webpack-plugin": "^5.3.2",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0",
-    "webpack-pwa-manifest": "^4.3.0",
-    "workbox-webpack-plugin": "^6.2.4"
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "16.x"
@@ -35,6 +29,16 @@
   "_comments": {
     "_comment-heroku-postbuild": "heroku skips build to run this script above",
     "_Xheroku-postbuild": "cd client && pwd && ls && webpack --config webpack.config.js",
-    "__Xheroku-postbuild": "webpack --config webpack.config.js"
+    "__Xheroku-postbuild": "webpack --config webpack.config.js",
+    "__XdevDependencies": {
+      "concurrently": "^5.2.0",
+      "nodemon": "^2.0.4",
+      "html-webpack-plugin": "^5.3.2",
+      "webpack": "^5.51.1",
+      "webpack-cli": "^4.8.0",
+      "webpack-dev-server": "^4.0.0",
+      "webpack-pwa-manifest": "^4.3.0",
+      "workbox-webpack-plugin": "^6.2.4"
+    }
   }
 }
