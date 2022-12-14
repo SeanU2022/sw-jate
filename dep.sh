@@ -4,5 +4,6 @@
 git add .
 git commit -m 'heroku trial and error to fix webpack: not found'
 git push
-git push heroku main
+# next line auto done by line above
+# git push heroku main 
 exit
