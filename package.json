@@ -9,8 +9,7 @@
     "start": "npm run build && cd server && node server.js",
     "server": "cd server node server.js --ignore client",
     "build": "cd client && pwd && ls && npm run build", 
-    "client": "cd client && npm start",
-    "heroku-postbuild": "webpack --config webpack.prod.js"
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
